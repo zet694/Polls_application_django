@@ -1,0 +1,15 @@
+{% extends "Polls/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+    {% if latest_question_list %}
+        <ul class="list-group">
+            {% for question in latest_question_list %}
+                <li class="list-group-item" style="background-color: #0c5460">
+                    <a href="{% url 'polls:detail' question.pk %}">{{ question.quest_text }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Нет доступных опросов</p>
+    {% endif %}
+{% endblock %}
